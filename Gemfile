@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'  #For Heroku only; ruby on rails does not need this line
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
+#gem 'pg', '0.15.1'
 
 group :development, :test do
 	gem 'sqlite3'
