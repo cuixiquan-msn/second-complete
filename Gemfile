@@ -4,6 +4,8 @@ ruby '1.9.3'  #For Heroku only; ruby on rails does not need this line
 
 gem 'rails', '4.1.1'
 #gem 'pg', '0.15.1'
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'sprockets', '2.11.0'
 
 group :development, :test do
 	gem 'sqlite3'
