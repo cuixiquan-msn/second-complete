@@ -4,14 +4,17 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user=User.new(user_params)
-  	if @user.save
+  	user=User.new(user_params)
+  	if user.save
+  		sign_in(user)
 		flash[:success] = "Welcome to the Xiquan's App!"
 		#flash[:true] = "Welcome to the Xiquan's App!"
 		#flash[:error] = "This is an error!"
 		#render 'show'
-		redirect_to @user
+		redirect_to user
+		#sign_in
 	else
+		flash[:error]= "Failed verification!"
 		render 'new'
 	end
   end
