@@ -22,11 +22,24 @@ module SessionsHelper
 		User.digest(User.new_remember_token))
 		cookies.delete(:remember_token)
 		#self.current_user = nil
-		@urrent_user = nil
+		@current_user = nil
 	end
 
-	def sign_in?
+	def signed_in?
 		!current_user.nil?
+	end
+
+	def current_user?(user)
+		current_user==user
+	end
+
+	def store_location
+	session[:return_to] = request.url if request.get?		
+	end
+
+	def redirect_back_or (default)
+		redirect_to (session[:return_to] || default)
+		session.delete(:return_to) 
 	end
 
 end
