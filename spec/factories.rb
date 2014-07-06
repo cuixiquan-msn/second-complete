@@ -14,4 +14,9 @@ FactoryGirl.define do
 	       admin true
 		end
 	end	
+
+	factory :micropost do
+		content "Hello from xiquan"
+		user
+	end
 end
