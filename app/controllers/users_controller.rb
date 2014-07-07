@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :signed_in_user, only: [:edit, :update, :index, :show]
+  before_action :signed_in_user, 
+                only: [:edit, :update, :index, :destroy, :show, :following, :followers]
+                #only: [:edit, :update, :index, :show, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :signed_in_user_no_need, only: [:new, :create]
@@ -60,6 +62,20 @@ class UsersController < ApplicationController
 		render 'edit'
 	end
   end
+
+  def following
+		@title = "Following"
+		@user = User.find(params[:id])
+		@users = @user.followed_users.paginate(page: params[:page])
+		render 'show_follow'
+	end
+		
+	def followers
+		@title = "Followers"
+		@user = User.find(params[:id])
+		@users = @user.followers.paginate(page: params[:page])
+		render 'show_follow'
+	end
 
   private
 		def user_params
